@@ -1,0 +1,73 @@
+{
+	"name": "n8n-nodes-murf",
+	"version": "0.1.3",
+	"description": "n8n node for integrating with Murf AI text-to-speech service",
+	"keywords": [
+		"n8n-community-node-package",
+		"murf",
+		"murf-ai",
+		"text-to-speech",
+		"tts",
+		"voice-synthesis",
+		"ai-voices",
+		"voice-changer",
+		"voice-conversion",
+		"translation",
+		"language-translation",
+		"video-dubbing",
+		"automated-dubbing",
+		"audio-processing",
+		"speech-synthesis",
+		"n8n"
+	],
+	"license": "MIT",
+	"homepage": "",
+	"author": {
+		"name": "Nilesh Inkane",
+		"email": "nilesh.inkane@murf.ai"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/murf-ai/n8n-nodes-murf"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"engines": {
+		"node": ">=20.15"
+	},
+	"main": "index.js",
+	"scripts": {
+		"build": "npx rimraf dist && tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier nodes credentials --write",
+		"lint": "eslint nodes credentials package.json",
+		"lintfix": "eslint nodes credentials package.json --fix",
+		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/MurfApi.credentials.js",
+			"dist/credentials/MurfDubApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Murf/Murf.node.js"
+		]
+	},
+	"devDependencies": {
+		"@types/node": "^24.5.2",
+		"@typescript-eslint/parser": "~8.32.0",
+		"eslint": "^8.57.0",
+		"eslint-plugin-n8n-nodes-base": "^1.16.3",
+		"gulp": "^5.0.0",
+		"prettier": "^3.5.3",
+		"typescript": "^5.8.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
